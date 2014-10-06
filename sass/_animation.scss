@@ -1,0 +1,126 @@
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+}
+
+//open animation
+@include keyframes(pane1-open) {
+  to {
+    @include transform( translateZ($size) );
+    opacity: 0;
+  }
+}
+
+
+@include keyframes(pane2-open) {
+  to {
+    @include transform( rotateY(-90deg) translateZ($size) );
+    opacity: 0;
+  }
+}
+
+
+@include keyframes(pane3-open) {
+  to {
+    @include transform( rotateX(90deg) translateZ($size) );
+    opacity: 0;
+  }
+}
+
+
+@include keyframes(pane4-open) {
+  to {
+    @include transform( rotateX(90deg) rotateY(180deg) translateZ($size) );
+    opacity: 0;
+  }
+}
+
+
+@include keyframes(pane5-open) {
+  to {
+    @include transform( rotateY(90deg) translateZ($size) );
+    opacity: 0;
+  }
+}
+
+
+@include keyframes(pane6-open) {
+  to {
+    @include transform( rotateY(180deg) translateZ($size) );
+    opacity: 0;
+  }
+}
+
+
+//close animation
+@include keyframes(pane1-close) {
+  from {
+    @include transform( translateZ($size) );
+    opacity: 0;
+  }
+  to {
+    @include transform( translateZ($size / 2) );
+    opacity: 1;
+  }
+}
+
+
+@include keyframes(pane2-close) {
+  from {
+    @include transform( rotateY(-90deg) translateZ($size) );
+    opacity: 0;
+  }
+  to {
+    @include transform( rotateY(-90deg) translateZ($size / 2) );
+    opacity: 1;
+  }
+}
+
+
+@include keyframes(pane3-close) {
+  from {
+    @include transform( rotateX(90deg) translateZ($size) );
+    opacity: 0;
+  }
+  to {
+    @include transform( rotateX(90deg) translateZ($size / 2) );
+    opacity: 1;
+  }
+}
+
+
+@include keyframes(pane4-close) {
+  from {
+    @include transform( rotateX(90deg) rotateY(180deg) translateZ($size) );
+    opacity: 0;
+  }
+  to {
+    @include transform( rotateX(90deg) rotateY(180deg) translateZ($size / 2) );
+    opacity: 1;
+  }
+}
+
+
+@include keyframes(pane5-close) {
+  from {
+    @include transform( rotateY(90deg) translateZ($size) );
+    opacity: 0;
+  }
+  to {
+    @include transform( rotateY(90deg) translateZ($size / 2) );
+    opacity: 1;
+  }
+}
+
+
+@include keyframes(pane6-close) {
+  from {
+    @include transform( rotateY(180deg) translateZ($size) );
+    opacity: 0;
+  }
+  to {
+    @include transform( rotateY(180deg) translateZ($size / 2) );
+    opacity: 1;
+  }
+}

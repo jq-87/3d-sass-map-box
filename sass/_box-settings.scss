@@ -1,0 +1,64 @@
+//colors
+$turquoise: #1abc9c;
+$amethyst: #9b59b6;
+$silver: #bdc3c7;
+$emerland: #2ecc71;
+$white: white;
+$black: black;
+
+//dimensions
+$size: 100px;
+
+//maps
+$panes: (
+  
+  pane1: (
+    transform: translateZ($size/2)
+  ),
+  pane2: (
+    transform: rotateY(-90deg) translateZ($size/2)
+  ),
+  pane3: (
+    transform: rotateX(90deg) translateZ($size/2)
+  ),
+  pane4: (
+    transform: rotateX(90deg) rotateY(180deg) translateZ($size/2)
+  ),
+  pane5: (
+    transform: rotateY(90deg) translateZ($size/2)
+  ),
+  pane6: (
+    transform: rotateY(180deg) translateZ($size/2)
+  )
+
+);
+
+//extends
+%layer {
+  width: $size;
+  height: $size;
+}
+
+%center-stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform( translateX(-50%) translateY(-50%) );
+}
+
+%button {
+  background: $amethyst;
+  color: $white;
+  width: auto;
+  height: auto;
+  padding: 0.5em;
+  border-radius: 20px;
+}
+
+%no-point-events {
+  pointer-events: none;
+}
+
+%transition {
+  @include transition( all 1s );
+}

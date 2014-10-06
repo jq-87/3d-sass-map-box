@@ -1,0 +1,74 @@
+@import "compass/css3";
+@import "compass/reset";
+@import "box-settings";
+@import "animation";
+@import "box";
+
+.container {
+	@extend %layer;
+	@extend %center-stage;
+
+	&:hover {
+		button {
+			background: $emerland;
+		}
+	}
+}
+
+[type="radio"] {
+	@extend %layer;
+	-webkit-appearance: none;
+	outline: none;
+	cursor: pointer;
+
+	&:checked {
+		display: none;
+	}
+}
+
+.trigger-close {
+
+	&:checked {
+		
+		~ .box .close { opacity: 0; }
+
+		~ .box div {
+			
+			@for $i from 1 to 7 {
+				&:nth-of-type(#{$i}) {
+					-webkit-animation: pane#{$i}-close 1s forwards;
+				}
+			}
+
+		}
+	}
+
+}
+
+.trigger-open {
+
+	&:checked {
+		
+		~ .open { opacity: 0; }
+		
+		~ .open {
+			@include transform( translateX(-50%) translateY(-50%) scale(5) );
+			opacity: 0;
+		}
+
+		~ .box {
+			@include transform( rotateX(0deg) rotateY(0deg) translateX(-$size/2) translateY(-$size/2) );
+	
+			div {
+				
+				@for $i from 1 to 7 {
+					&:nth-of-type(#{$i}) {
+						-webkit-animation: pane#{$i}-open 1s forwards;
+					}
+				}
+			}
+		}
+
+	}
+
+}

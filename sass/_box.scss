@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: $silver;
+}
+
+fieldset,
+button {
+  border: none;
+}
+
+button {
+  @extend %transition;
+}
+
+.box {
+  @extend %center-stage;
+  @extend %no-point-events;
+  @extend %transition;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  @include transform-origin( 0 0 0 0 );
+  @include transform( rotateX(45deg) rotateY(45deg) translateX(-$size / 2) translateY(-$size / 2) );
+  
+  &,
+  * {
+    @extend %layer;
+    position: absolute;
+  }
+  
+  div {
+    
+    $i: 1;
+
+    @each $pane, $paneProps in $panes {
+      
+      $paneTransform: map-get(map-get($panes, $pane), transform);
+
+      &:nth-of-type( #{$i} ) {
+          
+          background: rgba( 
+            mix( 
+              $turquoise, 
+              mix( $turquoise, $black, 30% ),
+              100/$i ), 1 );
+
+          border: 1px solid rgba( mix( $turquoise, $white, 80% ), 0.7 );
+
+          @if $paneTransform {
+            @include transform( $paneTransform );
+          }
+      }
+     
+     $i: $i + 1;
+
+    }
+
+  }
+
+  .close {
+    @extend %center-stage;
+    @extend %button;
+  }
+
+}
+
+.open {
+  @extend %no-point-events;
+  @extend %center-stage;
+  @extend %button;
+  z-index: 10;
+}   
